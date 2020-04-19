@@ -24,4 +24,16 @@ x[:, 1:3] = imputer.transform(x[:, 1:3])
 
 print(lineSeperator)
 print("After Data clensing\n")
+
+
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(),[0])], remainder='passthrough')
+x = np.array(ct.fit_transform(x))
 print(x)
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+y = le.fit_transform(y)
+print(y)
